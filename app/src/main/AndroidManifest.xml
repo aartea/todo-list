@@ -20,7 +20,7 @@
         </activity>
         <activity
             android:name=".sub_list"
-            android:label="@string/title_activity_sub_list"
+            android:label="project1"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

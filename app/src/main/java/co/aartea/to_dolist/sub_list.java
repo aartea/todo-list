@@ -26,7 +26,7 @@ public class sub_list extends AppCompatActivity {
 
     ActionBar actionBar;
 
-    String saveItem, getString, saveFromMain;
+    String getString, saveFromMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -36,7 +37,7 @@ public class sub_list extends AppCompatActivity {
 
         //Initialize
         elementList = new ArrayList<>();
-        lv = (ListView) findViewById(R.id.listView);
+        lv = (ListView) findViewById(R.id.lv);
         et = (EditText) findViewById(R.id.et);
 
         adapter = new ArrayAdapter<>
@@ -47,15 +48,11 @@ public class sub_list extends AppCompatActivity {
 
         Intent i = getIntent();
         saveFromMain = i.getStringExtra("main_list");
-
-        //Action bar - change the name from the source member
-        actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        setContentView(R.layout.activity_sub_list);
-
         //Set another intent to pass to another class to handle persistency
 
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        assert fab != null;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,11 +62,16 @@ public class sub_list extends AppCompatActivity {
                 et.getText().clear();
                 //if successful, add a Snackbar saying so
                 //else, handle error and catch it!
-                Snackbar.make(view, "Added item!", Snackbar.LENGTH_SHORT)
+                Snackbar.make(view, "Added!", Snackbar.LENGTH_SHORT)
                         .setAction("Action", null).show();
                 //et.getText().clear();
+                //Inserted code from outside source: will make keyboard disappear after text is entered.
+                try{
+                    InputMethodManager arbitraryName = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+                    arbitraryName.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                }
+                catch(Exception e){}
             }
         });
     }
-
 }

@@ -65,11 +65,12 @@ public class sub_list extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 getString = et.getText().toString();
+                //If user does not input anything, a toast will appear for them to try again!
                 if (getString.isEmpty()) {
                     Toast.makeText(sub_list.this, "Try typing out a list item", Toast.LENGTH_SHORT).show();
                 }
                 //Handle character count
-                if(getString.length() > CHARMAX){
+                else if(getString.length() > CHARMAX){
                     Toast.makeText(sub_list.this, "Sorry, can't exceed 10 characters!", Toast.LENGTH_SHORT).show();
                 }
                 else{

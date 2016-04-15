@@ -54,11 +54,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 getString = et.getText().toString();
+                //If user does not input anything, a toast will appear for them to try again!
                 if (getString.isEmpty()) {
                     Toast.makeText(MainActivity.this, "Try typing out a title", Toast.LENGTH_SHORT).show();
                 }
                 //Handle character count
-                if (getString.length() > CHARMAX) {
+                else if (getString.length() > CHARMAX) {
                     Toast.makeText(MainActivity.this, "Sorry, can't exceed 10 characters!", Toast.LENGTH_SHORT).show();
                 } else {
                     lists.add(getString);

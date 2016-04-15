@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 //Handle character count
                 else if (getString.length() > CHARMAX) {
-                    Toast.makeText(MainActivity.this, "Sorry, can't exceed 10 characters!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Sorry, can't exceed "+CHARMAX+" characters!", Toast.LENGTH_SHORT).show();
                 } else {
                     lists.add(getString);
                     adapter.notifyDataSetChanged();

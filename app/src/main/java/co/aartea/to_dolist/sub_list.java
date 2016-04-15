@@ -71,7 +71,7 @@ public class sub_list extends AppCompatActivity {
                 }
                 //Handle character count
                 else if(getString.length() > CHARMAX){
-                    Toast.makeText(sub_list.this, "Sorry, can't exceed 10 characters!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(sub_list.this, "Sorry, can't exceed "+CHARMAX+" characters!", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     elementList.add(getString);

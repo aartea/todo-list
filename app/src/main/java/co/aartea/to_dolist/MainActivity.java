@@ -19,6 +19,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     //Instantiate
+    final static int CHARMAX = 10;
 
     String getString;
 
@@ -55,6 +56,10 @@ public class MainActivity extends AppCompatActivity {
         getString = et.getText().toString();
             if(getString.isEmpty()){
                 Toast.makeText(MainActivity.this, "Try typing out a title", Toast.LENGTH_SHORT).show();
+            }
+            //Handle character count
+            if(getString.length() > CHARMAX){
+                Toast.makeText(MainActivity.this, "Sorry, can't exceed 10 characters!", Toast.LENGTH_SHORT).show();
             }
             else{
                 lists.add(getString);

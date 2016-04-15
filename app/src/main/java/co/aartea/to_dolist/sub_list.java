@@ -17,8 +17,11 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+
+
 public class sub_list extends AppCompatActivity {
     //Instantiate
+    final static int CHARMAX = 10;
 
     ArrayList<String> elementList;
     ArrayAdapter<String> adapter;
@@ -68,6 +71,10 @@ public class sub_list extends AppCompatActivity {
                 if (getString.isEmpty()) {
                     Toast.makeText(sub_list.this, "Try typing out a list item", Toast.LENGTH_SHORT).show();
                 }
+                //Handle character count
+                if(getString.length() > CHARMAX){
+                    Toast.makeText(sub_list.this, "Sorry, can't exceed 10 characters!", Toast.LENGTH_SHORT).show();
+                }
                 else{
                     elementList.add(getString);
                     adapter.notifyDataSetChanged();
@@ -87,14 +94,14 @@ public class sub_list extends AppCompatActivity {
 
             //Longclick remove method
             lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-               @Override
-               public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                      String pos = elementList.get(position);
-                       elementList.remove(pos);
-                       adapter.notifyDataSetChanged();
-                       return true;
-                  }
-               }
+                                              @Override
+                                              public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                                                  String pos = elementList.get(position);
+                                                  elementList.remove(pos);
+                                                  adapter.notifyDataSetChanged();
+                                                  return true;
+                                              }
+                                          }
             );
         }//end of onCreate
     }//end of sub_list class

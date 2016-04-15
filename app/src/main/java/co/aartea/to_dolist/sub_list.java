@@ -61,7 +61,7 @@ public class sub_list extends AppCompatActivity {
             public void onClick(View view) {
                 getString = et.getText().toString();
                 if (getString.isEmpty()) {
-                    Toast.makeText(sub_list.this, "Try typing out a title", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(sub_list.this, "Try typing out a list item", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     elementList.add(getString);

@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -71,6 +72,17 @@ public class sub_list extends AppCompatActivity {
                     arbitraryName.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                 }
                 catch(Exception e){}
+            }
+        });
+
+        //Longclick remove method
+        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                String pos = elementList.get(position);
+                elementList.remove(pos);
+                adapter.notifyDataSetChanged();
+                return true;
             }
         });
     }

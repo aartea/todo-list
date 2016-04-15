@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -51,34 +52,46 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         assert fab != null;
         fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                    getString = et.getText().toString();
-                    lists.add(getString);
-                    adapter.notifyDataSetChanged();
-                    et.getText().clear();
-                //if successful, add a Snackbar saying so
-                //else, handle error and catch it!
+
+    //Declares onClick method
+    @Override
+        public void onClick(View view) {
+            if(lists.isEmpty()){
+                Toast.makeText(MainActivity.this, "Try typing out a title", Toast.LENGTH_SHORT).show();
+            }
+            else
+                getString = et.getText().toString();
+                lists.add(getString);
+                adapter.notifyDataSetChanged();
+                et.getText().clear();
                 Snackbar.make(view, "Added!", Snackbar.LENGTH_SHORT)
                         .setAction("Action", null).show();
-                //et.getText().clear();
                 //Inserted code from outside source: will make keyboard disappear after text is entered.
-                try{
-                    InputMethodManager arbitraryName = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-                    arbitraryName.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-                    }
-                catch(Exception e){}
-            }
-        });
+            try{
+                InputMethodManager arbitraryName = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+                arbitraryName.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                }
+            catch(Exception e){}
+         }});
 
-        //Sets the intent
-
+     //Sets the intent
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(MainActivity.this, sub_list.class);
                 i.putExtra("main_list", lists.get(position));
                 startActivity(i);
+            }
+        });
+
+    //Longclick remove method
+        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                String pos = lists.get(position);
+                lists.remove(pos);
+                adapter.notifyDataSetChanged();
+                return true;
             }
         });
     }

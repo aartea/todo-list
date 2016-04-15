@@ -1,11 +1,8 @@
-##To-Do List App
- 
-###Description: 
-Project 1 of ADI. This will be a basic to-do list where a user can store a list of things to do -- among other lists. 
 
-####Mock-up of project
-![mock-up](/images/mockup1.png)
+###project1_checkboxes
 
-####Functioning App
-![app](/images/screenie.png)
+Branch of Project 1 of ADI. 
+
+I will be trying to add checkboxes as a functionality in this app.
+
 

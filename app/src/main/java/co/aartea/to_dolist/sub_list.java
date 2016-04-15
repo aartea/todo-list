@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -31,6 +32,7 @@ public class sub_list extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -58,32 +60,36 @@ public class sub_list extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 getString = et.getText().toString();
-                elementList.add(getString);
-                adapter.notifyDataSetChanged();
-                et.getText().clear();
-                //if successful, add a Snackbar saying so
-                //else, handle error and catch it!
-                Snackbar.make(view, "Added!", Snackbar.LENGTH_SHORT)
-                        .setAction("Action", null).show();
-                //et.getText().clear();
-                //Inserted code from outside source: will make keyboard disappear after text is entered.
-                try{
-                    InputMethodManager arbitraryName = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-                    arbitraryName.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                if (getString.isEmpty()) {
+                    Toast.makeText(sub_list.this, "Try typing out a title", Toast.LENGTH_SHORT).show();
                 }
-                catch(Exception e){}
+                else{
+                    elementList.add(getString);
+                    adapter.notifyDataSetChanged();
+                    et.getText().clear();
+                    Snackbar.make(view, "Added!", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+                }
+                    //Inserted code from outside source: will make keyboard disappear after text is entered.
+                    try{
+                        InputMethodManager arbitraryName = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                        arbitraryName.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                    }
+                    catch (Exception e){
+                    }
+                }
             }
-        });
+        );
 
-        //Longclick remove method
-        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                String pos = elementList.get(position);
-                elementList.remove(pos);
-                adapter.notifyDataSetChanged();
-                return true;
-            }
-        });
-    }
-}
+            //Longclick remove method
+            lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+               @Override
+               public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                      String pos = elementList.get(position);
+                       elementList.remove(pos);
+                       adapter.notifyDataSetChanged();
+                       return true;
+                  }
+               }
+            );
+        }//end of onCreate
+    }//end of sub_list class

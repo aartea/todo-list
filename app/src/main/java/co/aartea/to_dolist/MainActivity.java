@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -52,17 +53,17 @@ public class MainActivity extends AppCompatActivity {
      fab.setOnClickListener(new View.OnClickListener() {
     @Override
         public void onClick(View view) {
-            /*if(lists.isEmpty()){
+        getString = et.getText().toString();
+            if(getString.isEmpty()){
                 Toast.makeText(MainActivity.this, "Try typing out a title", Toast.LENGTH_SHORT).show();
             }
-            else*/
-                getString = et.getText().toString();
+            else{
                 lists.add(getString);
                 adapter.notifyDataSetChanged();
                 et.getText().clear();
-                Snackbar.make(view, "Added!", Snackbar.LENGTH_SHORT)
-                        .setAction("Action", null).show();
-                //Inserted code from outside source: will make keyboard disappear after text is entered.
+                Snackbar.make(view, "Added!", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+            }
+     //Inserted code from outside source: will make keyboard disappear after text is entered. This is not my code.
             try{
                 InputMethodManager arbitraryName = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
                 arbitraryName.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);

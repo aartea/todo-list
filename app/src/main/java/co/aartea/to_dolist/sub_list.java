@@ -53,7 +53,8 @@ public class sub_list extends AppCompatActivity {
         saveFromMain = i.getStringExtra("main_list");
 
         //Set toolbar name to list member's name
-        getSupportActionBar().setTitle(saveFromMain);
+        getSupportActionBar().setTitle(saveFromMain);       //Passes string value from the intent.
+                                                            //Note to self: It's all in intent.
 
         //Set another intent to pass to another class to handle persistency
 

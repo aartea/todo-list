@@ -94,14 +94,14 @@ public class sub_list extends AppCompatActivity {
 
             //Longclick remove method
             lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-                                              @Override
-                                              public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                                                  String pos = elementList.get(position);
-                                                  elementList.remove(pos);
-                                                  adapter.notifyDataSetChanged();
-                                                  return true;
-                                              }
-                                          }
+               @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                     String pos = elementList.get(position);
+                     elementList.remove(pos);
+                     adapter.notifyDataSetChanged();
+                     return true;
+                  }
+                }
             );
         }//end of onCreate
     }//end of sub_list class

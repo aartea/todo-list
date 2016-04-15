@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         lists = new ArrayList<>();
         adapter = new ArrayAdapter<>
                 (MainActivity.this,android.R.layout.simple_list_item_1, lists);
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

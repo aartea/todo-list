@@ -12,13 +12,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    //Variable assignment
+    //Instantiate
 
     String getString;
 
@@ -34,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Instantiate, initialize
+        //Initialize
         lv = (ListView) findViewById(R.id.listView);
         et = (EditText) findViewById(R.id.et);
         lists = new ArrayList<>();
@@ -47,19 +46,16 @@ public class MainActivity extends AppCompatActivity {
         //Set adapter
         lv.setAdapter(adapter);
 
-        //Action button will handle add request; perhaps edittext within listview
-        //Will need to find a way to add an item to the array...
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        assert fab != null;
-        fab.setOnClickListener(new View.OnClickListener() {
-
-    //Declares onClick method
+     //Declares onClick method
+     FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+     assert fab != null;
+     fab.setOnClickListener(new View.OnClickListener() {
     @Override
         public void onClick(View view) {
-            if(lists.isEmpty()){
+            /*if(lists.isEmpty()){
                 Toast.makeText(MainActivity.this, "Try typing out a title", Toast.LENGTH_SHORT).show();
             }
-            else
+            else*/
                 getString = et.getText().toString();
                 lists.add(getString);
                 adapter.notifyDataSetChanged();

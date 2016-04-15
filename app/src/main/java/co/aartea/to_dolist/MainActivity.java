@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     //Instantiate
-    final static int CHARMAX = 10;
+    final static int CHARMAX = 10;      //Sets max character count
 
     String getString;
 
@@ -40,42 +40,42 @@ public class MainActivity extends AppCompatActivity {
         et = (EditText) findViewById(R.id.et);
         lists = new ArrayList<>();
         adapter = new ArrayAdapter<>
-                (MainActivity.this,android.R.layout.simple_list_item_1, lists);
+                (MainActivity.this, android.R.layout.simple_list_item_1, lists);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         //Set adapter
         lv.setAdapter(adapter);
 
-     //Declares onClick method
-     FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-     assert fab != null;
-     fab.setOnClickListener(new View.OnClickListener() {
-    @Override
-        public void onClick(View view) {
-        getString = et.getText().toString();
-            if(getString.isEmpty()){
-                Toast.makeText(MainActivity.this, "Try typing out a title", Toast.LENGTH_SHORT).show();
-            }
-            //Handle character count
-            if(getString.length() > CHARMAX){
-                Toast.makeText(MainActivity.this, "Sorry, can't exceed 10 characters!", Toast.LENGTH_SHORT).show();
-            }
-            else{
-                lists.add(getString);
-                adapter.notifyDataSetChanged();
-                et.getText().clear();
-                Snackbar.make(view, "Added!", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
-            }
-     //Inserted code from outside source: will make keyboard disappear after text is entered. This is not my code.
-            try{
-                InputMethodManager arbitraryName = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
-                arbitraryName.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        //Declares onClick method
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        assert fab != null;
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getString = et.getText().toString();
+                if (getString.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Try typing out a title", Toast.LENGTH_SHORT).show();
                 }
-            catch(Exception e){}
-         }});
+                //Handle character count
+                if (getString.length() > CHARMAX) {
+                    Toast.makeText(MainActivity.this, "Sorry, can't exceed 10 characters!", Toast.LENGTH_SHORT).show();
+                } else {
+                    lists.add(getString);
+                    adapter.notifyDataSetChanged();
+                    et.getText().clear();
+                    Snackbar.make(view, "Added!", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+                }
+                //Inserted code from outside source: will make keyboard disappear after text is entered. This is not my code.
+                try {
+                    InputMethodManager arbitraryName = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    arbitraryName.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                } catch (Exception e) {
+                }
+            }
+        });
 
-     //Sets the intent
+        //Sets the intent
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    //Longclick remove method
+        //Longclick remove method
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {

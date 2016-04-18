@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     //Instantiate
     final static int CHARMAX = 10;      //Sets max character count
 
-    String getString;
+    String getString, receiveHold;
 
     ListView lv;
     EditText et;

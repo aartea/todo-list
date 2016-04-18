@@ -28,7 +28,7 @@ public class sub_list extends AppCompatActivity {
     EditText et;
     ListView lv;
 
-    String getString, saveFromMain;
+    String getString, saveFromMain, receiveHold;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +60,10 @@ public class sub_list extends AppCompatActivity {
         Intent k = getIntent();
         k.putExtra("main_list", saveFromMain);
 
+        //Capture data being passed from holdData class (member list only)
+        k = getIntent();
+        receiveHold = k.getStringExtra("hold_element");
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         assert fab != null;
         fab.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +84,7 @@ public class sub_list extends AppCompatActivity {
                     Intent j = new Intent(sub_list.this, holdData.class);
                     j.putExtra("sub_list_member", elementList.indexOf(getString));
                     //end intent, continue with method
+
                     adapter.notifyDataSetChanged();
                     et.getText().clear();
                     Snackbar.make(view, "Added!", Snackbar.LENGTH_SHORT).setAction("Action", null).show();

@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 
 public class holdData extends AppCompatActivity{
-    
+
     static ArrayList<String> ListElements = new ArrayList<>();
     static ArrayList<ArrayList<String>> ListOLists = new ArrayList<>();
 

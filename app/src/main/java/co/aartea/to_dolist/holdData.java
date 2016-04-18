@@ -28,20 +28,25 @@ public class holdData extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+            //Set appropriate intents as a data exchange between classes.
             Intent grabElement = getIntent();   //Intent to grab the element within the master list
             Intent grabList = getIntent();      //Intent to grab the master list
             Intent sendElement = new Intent(holdData.this, MainActivity.class);
             Intent sendList = new Intent(holdData.this,MainActivity.class);
 
+            //Variables to hold element
             element = grabElement.getStringExtra("sub_list_member");
             list = grabList.getStringExtra("main_list");
 
+            //Add elements/list to appropriate ArrayList
             ListElements.add(element);
             ListOLists.add(ListElements.indexOf(element),ListOLists.get(index));
 
+            //Push intent to be handled by other classes
             sendElement.putExtra("hold_element",ListElements.indexOf(element));
             sendList.putExtra("hold_list",ListOLists.indexOf(element));
+
+            //Start the activities to initiate intent sequence
             startActivity(sendElement);
             startActivity(sendList);
     }

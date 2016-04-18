@@ -83,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(MainActivity.this, sub_list.class);
                 i.putExtra("main_list", lists.get(position));
                 startActivity(i);
+                //Receive the activity from holdData class to list the same members again from within
+                //the passed position value (need to call it to give it the idea of persistence).
             }
         });
 
@@ -96,5 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+
     }
 }

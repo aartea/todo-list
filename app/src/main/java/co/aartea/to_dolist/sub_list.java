@@ -56,8 +56,9 @@ public class sub_list extends AppCompatActivity {
         getSupportActionBar().setTitle(saveFromMain);       //Passes string value from the intent.
                                                             //Note to self: It's all in intent.
 
-        //Set another intent to pass to another class to handle persistency
-
+        //Capture data being passed as a parameter in the setIntent method to save it into holdData class.
+        Intent k = getIntent();
+        k.putExtra("main_list", saveFromMain);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         assert fab != null;
@@ -75,6 +76,10 @@ public class sub_list extends AppCompatActivity {
                 }
                 else{
                     elementList.add(getString);
+                    //Set another intent to pass to another class to handle persistency from sub_list
+                    Intent j = new Intent(sub_list.this, holdData.class);
+                    j.putExtra("sub_list_member", elementList.indexOf(getString));
+                    //end intent, continue with method
                     adapter.notifyDataSetChanged();
                     et.getText().clear();
                     Snackbar.make(view, "Added!", Snackbar.LENGTH_SHORT).setAction("Action", null).show();

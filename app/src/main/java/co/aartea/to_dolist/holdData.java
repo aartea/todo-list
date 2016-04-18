@@ -15,9 +15,9 @@ import java.util.ArrayList;
  *
  **************************************************************************************************/
 
-    //Public variables to be accessed by methods
-public class holdData extends AppCompatActivity{
 
+public class holdData extends AppCompatActivity{
+    
     static ArrayList<String> ListElements = new ArrayList<>();
     static ArrayList<ArrayList<String>> ListOLists = new ArrayList<>();
 
